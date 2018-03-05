@@ -1,0 +1,1 @@
+<?php return array ('family' => 'x','ver' => '1.7.0','releasedate' => '20180228001');?>

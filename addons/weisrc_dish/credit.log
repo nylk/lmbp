@@ -1,0 +1,15 @@
+array (
+  'payx_score' => 0,
+  'totalprice' => '45.00',
+  'orderid' => '30',
+)
+array (
+  'payx_score' => 0,
+  'totalprice' => '19.00',
+  'orderid' => '29',
+)
+array (
+  'payx_score' => 0,
+  'totalprice' => '45.00',
+  'orderid' => '28',
+)

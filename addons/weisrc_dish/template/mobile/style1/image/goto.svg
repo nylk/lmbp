@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="26px" viewBox="0 0 14 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_前进</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4个人中心" transform="translate(-693.000000, -570.000000)">
+            <g id="我的优惠券-copy" transform="translate(0.000000, 528.000000)">
+                <g id="icon_前进" transform="translate(678.000000, 39.000000)">
+                    <g>
+                        <polygon id="bounds" points="0 32 31.999 32 31.999 0.001 0 0.001"></polygon>
+                        <path d="M15.9998,29.0001 C15.7368,29.0001 15.4748,28.8971 15.2778,28.6921 C14.8958,28.2941 14.9088,27.6611 15.3078,27.2791 L26.9608,16.0921 C26.9858,16.0671 26.9998,16.0361 26.9998,16.0001 L15.3078,4.7211 C14.9088,4.3391 14.8958,3.7061 15.2778,3.3081 C15.6598,2.9091 16.2948,2.8961 16.6918,3.2791 L28.3458,14.4661 C28.7618,14.8641 28.9998,15.4231 28.9998,15.9991 C28.9998,16.5751 28.7618,17.1351 28.3458,17.5341 L16.6918,28.7211 C16.4988,28.9081 16.2488,29.0001 15.9998,29.0001" fill="#555555"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

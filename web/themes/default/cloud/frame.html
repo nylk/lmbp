@@ -1,0 +1,68 @@
+{template 'common/header'}
+<div class="we7-page-title">模块更新</div>
+<ul class="we7-page-tab">
+	<li {if $_GPC['do'] == 'redirect' || $_GPC['do'] == ''}class="active"{/if}><a>模块列表</a></li>
+</ul>
+
+<div class="keyword-list-head clearfix we7-margin-bottom">
+	<form action="" method="get">
+		<input type="hidden" name="c" value="cloud">
+		<input type="hidden" name="a" value="redirect">
+		<div class="input-group pull-left col-sm-4">
+			<input type="text" name="title" id="" value="{$_GPC['title']}" class="form-control" placeholder="搜索模块"/>
+			<span class="input-group-btn"><button class="btn btn-default"><i class="fa fa-search"></i></button></span>
+		</div>
+	</form>
+</div>
+
+<table class="table we7-table table-hover">
+	<col width="120px"/>
+	<col width="100px"/>
+	<col width="120px"/>
+	<col width="120px"/>
+	<col width="120px"/>
+	<col/>
+	<tr>
+		<th class="text-left">模块名称</th>
+		<th>模块标识</th>
+		<th>版本号</th>
+		<th class="text-left">操作</th>
+	</tr>
+	{if $result && $total}
+		{loop $result $row}
+	<tr>
+		<td class="text-left">{$row['title']}</td>
+		<td>{$row['name']}</td>
+        {if !module_ver($row['name']) }
+          <td>{$row['version']}</td>
+          {else}
+          {if $row['version'] > module_ver($row['name']) }
+          <td style="color:red">升级{php echo module_ver($row['name'])}->{$row['version']}</td>
+          {else}
+          <td>{$row['version']}</td>
+          {/if}
+        {/if}
+		<td class="text-left">
+			<div class="link-group">
+              {if $row['found'] == 0 }
+				<a href="{url 'cloud/moduleup'}m={$row['name']}&d=prepare">下载</a>
+              {else}
+              	{if $row['version'] > module_ver($row['name']) }
+					<a href="{url 'cloud/moduleup'}m={$row['name']}&d=prepare">升级</a>
+              	{else}
+              		<a href="{url 'cloud/redirect/version-del'}m={$row['id']}"></a>
+              	{/if}
+              {/if}
+              	<a href="{url 'cloud/moduleup'}m={$row['name']}&d=prepare">强制更新模块</a>
+			</div>
+		</td>
+	</tr>
+		{/loop}
+	{/if}
+</table>
+
+							<!----------------------------------------->
+<div class="pull-right">
+	{$pager}
+</div>
+{template 'common/footer'}

@@ -1,0 +1,120 @@
+2018-03-03 13:28:51 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fd65659f2e7f]]></ToUserName>
+<FromUserName><![CDATA[oGhiT08dawxnIbhsscOBUX3mAl6g]]></FromUserName>
+<CreateTime>1520054931</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2]]></EventKey>
+<MenuId>468395291</MenuId>
+</xml>
+
+2018-03-03 13:28:51 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fd65659f2e7f',
+    'fromusername' => 'oGhiT08dawxnIbhsscOBUX3mAl6g',
+    'createtime' => '1520054931',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2',
+    'menuid' => '468395291',
+    'from' => 'oGhiT08dawxnIbhsscOBUX3mAl6g',
+    'to' => 'gh_fd65659f2e7f',
+    'time' => '1520054931',
+    'type' => 'text',
+    'content' => 'http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2018-03-03 13:28:51 response :
+------------
+
+2018-03-03 13:29:33 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fd65659f2e7f]]></ToUserName>
+<FromUserName><![CDATA[oGhiT08dawxnIbhsscOBUX3mAl6g]]></FromUserName>
+<CreateTime>1520054973</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2]]></EventKey>
+<MenuId>468395291</MenuId>
+</xml>
+
+2018-03-03 13:29:33 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fd65659f2e7f',
+    'fromusername' => 'oGhiT08dawxnIbhsscOBUX3mAl6g',
+    'createtime' => '1520054973',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2',
+    'menuid' => '468395291',
+    'from' => 'oGhiT08dawxnIbhsscOBUX3mAl6g',
+    'to' => 'gh_fd65659f2e7f',
+    'time' => '1520054973',
+    'type' => 'text',
+    'content' => 'http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2018-03-03 13:29:33 response :
+------------
+
+2018-03-03 13:39:10 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fd65659f2e7f]]></ToUserName>
+<FromUserName><![CDATA[oGhiT08dawxnIbhsscOBUX3mAl6g]]></FromUserName>
+<CreateTime>1520055550</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2]]></EventKey>
+<MenuId>468395291</MenuId>
+</xml>
+
+2018-03-03 13:39:10 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fd65659f2e7f',
+    'fromusername' => 'oGhiT08dawxnIbhsscOBUX3mAl6g',
+    'createtime' => '1520055550',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2',
+    'menuid' => '468395291',
+    'from' => 'oGhiT08dawxnIbhsscOBUX3mAl6g',
+    'to' => 'gh_fd65659f2e7f',
+    'time' => '1520055550',
+    'type' => 'text',
+    'content' => 'http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2018-03-03 13:39:10 response :
+------------
+

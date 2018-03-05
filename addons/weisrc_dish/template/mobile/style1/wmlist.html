@@ -1,0 +1,246 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="description" content="">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="format-detection" content="email=no">
+        <title>{$store['title']}</title>    
+        <!--<link rel='stylesheet' href="https://s.xingbianli.cn/app/app-openrack-h5/main.CHgffje_84Z33b.min.css"/>-->
+        <link rel='stylesheet' href="{php echo $this->cur_mobile_path}/css/main.css?r=a"/>
+        <link rel="stylesheet" href="{php echo $this->cur_mobile_path}/mvalidate/validate.css" />
+    </head>
+    <body>
+        <input type="hidden" id="hddCateCount" value="{$catecount}" >
+        <input type="hidden" id="hddAddCartUrl" value="{php echo $this->createMobileUrl('cartadd', array('storeid' => $storeid, 'from_user' => $from_user), true)}">
+        <input type="hidden" id="hddJumpUrl" value="{$jump_url}">
+        <input type="hidden" id="hddOptionUrl" value="{php echo $this->createMobileUrl('getoption', array(), true)}">
+        <input type="hidden" id="hddSelectOptionUrl" value="{php echo $this->createMobileUrl('getselectspec', array(), true)}">
+        <input type="hidden" id="hddPersonUrl" value="{php echo $this->createMobileUrl('usercenter', array(), true)}">
+        <input type="hidden" id="hddChargeUrl" value="{php echo $this->createMobileUrl('recharge', array('storeid' => $storeid), true)}">
+        <div id="app">
+            <div class="app-body">
+                <main class="p-commodity-list">
+                    {if $_GPC['t'] != 'xcx'}
+                    <nav class="shelf-nav shelf-nav-entries">
+                        <img src="{php echo tomedia($store['logo']);}" class="logo" alt="logo">
+                        <div class="charge nav-icon js-charge"><i class="charge-icon"></i>充值</div>
+                        <div class="person nav-icon js-person"><i class="person-icon"></i>我的</div>
+                    </nav>
+                    {/if}
+                    <!--分类和商品开始-->
+                    <div class="container">
+                        <div class="categories">
+                            {loop $category $item}
+                            <div class="tab-item {if $flag!=true}active{/if}">{$item['name']}</div>
+                            {php $flag = true;}
+                            {/loop}
+                        </div>
+
+                        <div class="commodity-list">
+                            <div class="banner">
+                                <img src="http://v.cqfswl.cn/attachment/images/2/2018/02/DtTkBmhMdjTidHmTlhhJJTnHtOktKb.png"/>                                    
+                            </div>
+                            {loop $category $item}
+                            <div class="floor" data-cid="{$item['id']}" data-name="{$item['name']}">
+                                <div class="floor-name active">{$item['name']}</div>
+                                {loop $goodslist[$item['id']]['goods'] $goods}
+                                <div class="item" id="dishid_{$goods['id']}">
+                                    <div class="commodity-pic">
+                                        <img src="{php echo tomedia($goods['thumb']);}" alt="{$goods['title']}" />
+                                    </div>
+                                    <div class="commodity-content">
+                                        <div class="name">
+                                            {$goods['title']}
+                                        </div>
+                                        <div class="tag">
+                                            {if !empty($goods['productprice'])}
+                                            <span class="c_tag">特价</span>
+                                            {/if}
+                                            {if !empty($goods['labelid'])}
+                                            <span class="c_tag" style="color: rgb(85, 85, 85); border: 1px solid rgb(85, 85, 85);">{$label[$goods['labelid']]}</span>
+                                            {/if}
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="c_price">
+                                                {if !empty($goods['productprice'])}
+                                                <span class="actual-price">{$goods['marketprice']}<span class="unit">元</span></span>
+                                                <span class="origin-price">{$goods['productprice']}元</span>
+                                                {else}
+                                                {$goods['marketprice']}<span class="unit">元</span>
+                                                {/if}
+
+                                            </div>
+                                            <div class="number-input js-number-input" data-dishid="{$goods['id']}"  data-marketprice="{$goods['marketprice']}">
+                                                {if $cartgoods[$goods['id']]>0 and $goods['isoptions']!=1}
+                                                <span class="sub-click-space"><span class="shape-btn btn-dec"><span class="shape dec" onclick="cartminus(this);
+                                                        return false;"></span></span></span>
+                                                <div class="count">
+                                                    {$cartgoods[$goods['id']]['total']}
+                                                </div>
+                                                {else}
+                                                {if $goods['isoptions']==1}
+                                                {else}
+                                                <span class="sub-click-space hidden"><span class="shape-btn btn-dec"><span class="shape dec" onclick="cartminus(this);
+                                                        return false;"></span></span></span>
+                                                <div class="count hidden">
+                                                    0
+                                                </div>
+                                                {/if}
+                                                {/if}
+                                                <span class="add-click-space">
+                                                    <span class="shape-btn btn-add {if $goods['isoptions']==1}btn-add-options{/if}" data-goodsid="{$goods['id']}">
+                                                        {if $goods['isoptions']==1}
+                                                        选规格
+                                                        <em class="j-muti-num muti-num" {if $cartgoods[$goods['id']]['total']>0} style="display: inline;" {else}style="display:none;"{/if}>{$cartgoods[$goods['id']]['total']}</em>
+                                                        {else}
+                                                        <span class="shape add"></span>
+                                                        {/if}
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/loop}                                
+                            </div>
+                            {/loop}
+                        </div>
+                    </div>
+                    <!--分类和商品结束-->                    
+                    <!--购物车开始-->
+                    <div class="cart-bar-bottom">
+                        <div class="cart-bar">
+                            <div class="icon-cart-bg">
+                                <div class="icon-cart"></div>
+                                {if $totalcount>0}
+                                <div class="count">
+                                    {$totalcount}
+                                </div>
+                                {/if}
+                            </div>
+                            <div class="summary">
+                                <div class="actual" data-totalprice="0"><span class="actual-total">合计: {$totalprice}元</span>{if $discount>0}<span class="origin-total">{$marketprice}元</span>{/if}</div>
+
+                                {if $discount>0}
+                                <div class="coupon-exclusive ">
+                                    已优惠：{$discount}元
+                                </div>
+                                {else}
+                                <div class="coupon-exclusive hidden">
+
+                                </div>
+                                {/if}
+                            </div>
+                            <div class="btn-confirm">
+                                选好了
+                            </div>
+                        </div>
+
+                        <div class="c-drawer">
+                            <div class="overlay"></div>
+                            <div class="box">
+                                <div class="content">
+                                    <div class="cart">
+                                        <div class="summary" id="selectCount">
+                                            已选商品 ({$totalcount})
+                                        </div>
+                                        <div class="items">
+                                            <div id="cart-box">
+                                                {loop $cart $item}
+                                                <div class="cart-item">
+                                                    <div class="name ">
+                                                        {$item['goodstitle']}{if !empty($item['optionname'])}[{$item['optionname']}]{/if}
+                                                    </div>
+                                                    <div class="price coupon-price">
+                                                        <span class="number">{$item['totalprice']}&nbsp;元</span>
+                                                        {if $item['totalmarketprice']>0}
+                                                        <span class="origin-price">原价<span class="origin-price-num">{$item['totalmarketprice']} 元</span></span>
+                                                        {/if}
+                                                    </div>
+                                                    <div class="number-input" data-dishid="{$item['goodsid']}" data-optionid="{$item['optionid']}">
+                                                        <span class="sub-click-space "><span class="shape-btn btn-dec"><span class="shape dec" onclick="cartminus(this);
+                                                                return false;"></span></span></span>
+                                                        <div class="count ">
+                                                            {$item['total']}
+                                                        </div>
+                                                        <span class="add-click-space"><span class="shape-btn btn-add"><span class="shape add" onclick="cartadd(this);
+                                                                return false;"></span></span></span>
+                                                    </div>
+                                                </div>
+                                                {/loop}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="margin"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--购物车结束-->
+                </main>
+            </div>
+        </div>
+
+        <div class="j-mutimask mask" style="display: none;"></div>
+        <div id="muti-dialog" class="simpledialog mutidialog" style="display: none;"> 
+            <input type="hidden" id="cur_dishid" value="" >
+            <input type="hidden" id="cur_optionid" value="" >
+            <span id="muti-close" class="muti-close hide-dialog"></span> 
+            <div class="j-muti-wrap muti-wrap" style="max-height: 588.8px;"> 
+                <div class="muti-food-title">
+
+                </div> 
+                <div class="j-muti-cont muti-cont"> 
+                    <div class="muti-cont-inner" id="goods-native-scroll" style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);"> 
+
+                    </div> 
+                </div> 
+                <div class="muti-choose"> 
+                    <div class="muti-oprt"> 
+                        <div class="j-item-console muti-cart-oprt clearfix" style="display:none;"> 
+                            <a class="j-add-item add-food" href="javascript:;"><i class="icon i-add-food"></i></a> 
+                            <span class="j-item-num foodop-num">0</span> 
+                            <a class="j-remove-item remove-food" href="javascript:;"><i class="icon i-remove-food" ></i></a> 
+                        </div> 
+                        <div class="muti-cart-btn add-food" style="display:block;">
+                            加入购物车
+                        </div> 
+                    </div> 
+                    <div class="muti-info"> 
+                        <span class="muti-price">&yen;10</span><span class="origin-total"></span>
+                    </div> 
+                </div> 
+            </div> 
+        </div>
+
+        <script src="{php echo $this->cur_mobile_path}/script/zepto.min.js"></script>
+        <script src="{php echo $this->cur_mobile_path}/script/jquery-1.8.3.min.js"></script>
+        <script src="{php echo $this->cur_mobile_path}/script/fly.min.js"></script>
+        <script src="{php echo $this->cur_mobile_path}/script/main.js"></script>
+        <script type="text/javascript" src="{php echo $this->cur_mobile_path}/mvalidate/jquery-mvalidate.js" ></script>
+        {php echo register_jssdk(false);}
+        <script>
+            wx.ready(function () {
+                sharedata = {
+                    title: '{$share_title}',
+                    desc: '{$share_desc}',
+                    link: '{$share_url}',
+                    imgUrl: '{$share_image}',
+                    success: function () {
+
+                    },
+                    cancel: function () {
+
+                    }
+                };
+                wx.onMenuShareAppMessage(sharedata);
+                wx.onMenuShareTimeline(sharedata);
+            });
+        </script>
+    </body>
+</html>

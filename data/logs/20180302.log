@@ -1,0 +1,80 @@
+2018-03-02 14:31:09 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fd65659f2e7f]]></ToUserName>
+<FromUserName><![CDATA[oGhiT07E0EJbA0gNf3sqCi7ta-zc]]></FromUserName>
+<CreateTime>1519972269</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2]]></EventKey>
+<MenuId>468395291</MenuId>
+</xml>
+
+2018-03-02 14:31:09 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fd65659f2e7f',
+    'fromusername' => 'oGhiT07E0EJbA0gNf3sqCi7ta-zc',
+    'createtime' => '1519972269',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2',
+    'menuid' => '468395291',
+    'from' => 'oGhiT07E0EJbA0gNf3sqCi7ta-zc',
+    'to' => 'gh_fd65659f2e7f',
+    'time' => '1519972269',
+    'type' => 'text',
+    'content' => 'http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2018-03-02 14:31:09 response :
+------------
+
+2018-03-02 14:32:14 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_fd65659f2e7f]]></ToUserName>
+<FromUserName><![CDATA[oGhiT07E0EJbA0gNf3sqCi7ta-zc]]></FromUserName>
+<CreateTime>1519972334</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2]]></EventKey>
+<MenuId>468395291</MenuId>
+</xml>
+
+2018-03-02 14:32:14 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_fd65659f2e7f',
+    'fromusername' => 'oGhiT07E0EJbA0gNf3sqCi7ta-zc',
+    'createtime' => '1519972334',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2',
+    'menuid' => '468395291',
+    'from' => 'oGhiT07E0EJbA0gNf3sqCi7ta-zc',
+    'to' => 'gh_fd65659f2e7f',
+    'time' => '1519972334',
+    'type' => 'text',
+    'content' => 'http://v.cqfswl.cn/app/index.php?i=2&c=entry&storeid=6&do=wmlist&m=weisrc_dish&mode=2',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2018-03-02 14:32:14 response :
+------------
+

@@ -1,0 +1,102 @@
+<html >
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="description" content="">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="format-detection" content="email=no">
+        <title>充值返现</title>            
+        <link rel='stylesheet' href="{php echo $this->cur_mobile_path}/css/main.css"/>
+        <link rel="stylesheet" href="{php echo $this->cur_mobile_path}/mvalidate/validate.css" />
+    </head>
+    <body>
+        <div id="app">
+            <div class="app-body">
+                <div class="p-recharge-list">
+                    <div class="recharge-list">
+                        <input type="hidden" id="input_price" value="{$list[0]['recharge_value']}" />
+                        {loop $list $index $item}
+                        <div data-price="{$item['recharge_value']}" class="recharge-item {if $index==0}selected{/if}">
+                            <div class="amount">{php echo round($item['recharge_value'])}
+                                <span class="unit">元</span>
+                            </div>
+                            <div class="coupon">返{$item['give_value']}元</div>                                
+                        </div>
+                        {/loop}
+                    </div>
+                    <!--<div class="recharge-agreement">点击立即支付，即表示您已同意
+                        <span class="agreement-link">《充值协议》</span></div>-->
+                    <div class="recharge-btn" onclick="go_pay();">立即支付</div>
+                    <div class="recharge-description">
+                        <h4>充值说明：</h4>
+                        <p>充值本额不可提现、转移、转增，账户余额无有效期</p>
+                        <!--<p>2. 充值本额不可提现、转移、转增，账户余额无有效期</p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="{php echo $this->cur_mobile_path}/script/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="{php echo $this->cur_mobile_path}/mvalidate/jquery-mvalidate.js" ></script>
+
+        <form action="{php echo url('mc/cash/wechat');}" method="post" id="payform">
+            <input type="hidden" name="params" id="params" value="" />
+            <input type="hidden" name="code" value="" />
+            <input type="hidden" name="coupon_id" value="" />
+        </form>
+
+        <script>
+
+
+            function go_pay() {
+                var input_price = $('#input_price').val();
+                if (!input_price) {
+                    $.mvalidateTip("请输入支付金额");
+                    return false;
+                }
+                if (parseFloat(input_price).toFixed(2) < 0.01 || parseFloat(input_price).toFixed(2) == 'NaN') {
+                    $.mvalidateTip("请重新输入金额");
+                    $('#input_price').val('');
+                    return false;
+                }
+
+                var url = "{php echo $this->createMobileUrl('addtoorder', array('storeid' => $storeid, 'from_user' => $from_user), true)}";
+                var totalprice = parseFloat(input_price);
+                //var remark = $('#remark').val();
+
+                $.ajax({
+                    url: url, type: "post", dataType: "json", timeout: "10000",
+                    data: {
+                        "type": "add",
+                        "total": totalprice,
+                        //"remark": remark,
+                        "ordertype": 6
+                    },
+                    success: function(data) {
+                        if (data.message['code'] != 0) {
+                            var url = "{php echo $this->createMobileUrl('pay', array(), true)}" + "&orderid=" + data.message['orderid'];
+                            location.href = url;
+//                    $('#params').val(data.message['params']);
+//                    $('#payform').submit();
+                        } else {
+                            alert(data.message['msg']);
+                        }
+                    }, error: function() {
+                        alert("订单提交失败！");
+                    }
+                });
+            }
+//            function ch_none(a) {
+//                $(a).css({"background": "none"})
+//            }
+
+            $(document).ready(function() {
+                $('.recharge-item').on('click', function() {
+                    $(this).addClass('selected').siblings().removeClass('selected');
+                    $('#input_price').val($(this).data('price'));
+                });
+            });
+        </script>
+    </body>
+</html>
