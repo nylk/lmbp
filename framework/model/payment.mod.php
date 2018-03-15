@@ -153,7 +153,7 @@ function wechat_build($params, $wechat) {
 			$package['trade_type'] = 'NATIVE';
 			$package['product_id'] = $params['goodsid'];
 		} else {
-			//$package['openid'] = empty($params['user']) ? $_W['fans']['from_user'] : $params['user'];
+			$package['openid'] = empty($params['user']) ? $_W['fans']['from_user'] : $params['user'];
 			if (!empty($wechat['sub_mch_id'])) {
 				$package['sub_mch_id'] = $wechat['sub_mch_id'];
 			}
