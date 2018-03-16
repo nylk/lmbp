@@ -1,0 +1,94 @@
+{template 'common/header'}
+<div class="main">
+    <div class="col-lg-12">
+        <div class="panel panel-danger">
+            <div class="main">
+                <ul class="nav nav-tabs">
+                    <li {if $_GPC[ 'op']=='' }class="active" {/if}>
+                        <a href="{php echo $this->createWebUrl('slide')}">幻灯片列表</a>
+                    </li>
+                    <li {if $_GPC[ 'op']=='add' }class="active" {/if}>
+                        <a href="{php echo $this->createWebUrl('slide', array('op' => 'add'))}">添加</a>
+                    </li>
+                    <li {if $_GPC[ 'op']=='edit' }class="active" {/if}>
+                        <a href="javascript:void(0);">编辑</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                {if $_GPC['op'] == ''}
+                <table class="table table-hover table-striped table-bordered">
+                    <thead>
+                        <tr  style="vertical-align:middle; text-align:center;">
+                            <!-- <th>排序</th> -->
+                            <th>幻灯片名称</th>
+                            <th>幻灯片</th>
+                            <th>操作</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {loop $slides $slide}
+                        <tr>
+                            <!-- <td>{$slide['sort']}</td> -->
+                            <td>{$slide['remark']}</td>
+                            <td><img src="{media $slide['image']}" style="width: 144px;height: 72px;"></td>
+                            <td>
+                                <a href="{php echo $this->createWebUrl('slide', array('op' => 'edit', 'Id' => $slide['Id']))}" class="btn btn-xs btn-warning">编辑</a>
+                                <a href="javascript:void(0);" class="btn btn-xs btn-danger" onclick="if (confirm('确定删除？')) { location.href = '{php echo $this->createWebUrl('slide', array('op' => 'delete', 'Id' => $slide['Id']))}'; }">删除</a>
+                            </td>
+                        </tr>
+                        {/loop}
+                    </tbody>
+                </table>
+                {/if} 
+                {if $_GPC['op'] == 'add'}
+                <form action="{php echo $this->createWebUrl('slide', array('op' => 'create'))}" method="post">
+                   <!--  <div class="form-group">
+                        <label>排序</label>
+                        <input type="text" name="sort" id="sort" class="form-control" placeholder="默认为0，越大越前">
+                        <span class="help-block"></span>
+                    </div> -->
+                    <input type="hidden" name="versionid" value="{$_W['uniacid']}">
+                    <div class="form-group">
+                        <label>幻灯片名称：</label>
+                        <input type="text" name="remark" id="remark" class="form-control" placeholder="不显示在前台">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="form-group">
+                    <label>幻灯片图片：</label>
+                        {php echo tpl_form_field_image('image', $img['image']);}
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="提交" class="btn btn-primary">
+                    </div>
+                </form>
+                {/if} 
+                {if $_GPC['op'] == 'edit'}
+                <form action="{php echo $this->createWebUrl('slide', array('op' => 'update'))}" method="post">
+                    <input type="hidden" name="Id" value="{$edit['Id']}">
+                    <input type="hidden" name="versionid" value="{$edit['versionid']}">
+                    <!-- <div class="form-group">
+                        <label>排序</label>
+                        <input type="text" name="sort" id="sort" class="form-control" placeholder="默认为0，越大越前" value="{$edit['sort']}">
+                        <span class="help-block"></span>
+                    </div> -->
+                    <div class="form-group">
+                        <label>幻灯片名称：</label>
+                        <input type="text" name="remark" id="remark" class="form-control" placeholder="不显示在前台" value="{$edit['remark']}">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="form-group">
+                    <label>幻灯片图片：</label>
+                        {php echo tpl_form_field_image('image', $edit['image']);}
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="提交" class="btn btn-primary">
+                    </div>
+                </form>
+                {/if}
+            <div>
+        </div>
+    </div>
+</div>
+        {template 'common/footer'}

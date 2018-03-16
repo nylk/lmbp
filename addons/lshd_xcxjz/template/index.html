@@ -1,0 +1,105 @@
+{template 'common/header'}
+<div class="main">
+    <div class="col-lg-12">
+        <div class="panel panel-danger">
+            <div class="main">
+                <ul class="nav nav-tabs">
+                    <li {if $_GPC[ 'op']=='' }class="active" {/if}>
+                        <a href="{php echo $this->createWebUrl('index')}">小程序列表</a>
+                    </li>
+                    <li {if $_GPC[ 'op']=='add' }class="active" {/if}>
+                        <a href="{php echo $this->createWebUrl('index', array('op' => 'add'))}">添加</a>
+                    </li>
+                    <li {if $_GPC[ 'op']=='edit' }class="active" {/if}>
+                        <a href="javascript:void(0);">编辑</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                {if $_GPC['op'] == ''}
+                <table class="table table-hover table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>图标</th>
+                            <th>小程序</th>
+                            <th>小程序描述</th>
+                            <th>小程序appid</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {loop $setindexs $setindex}
+                        <tr>
+                            <td><img src="{media $setindex['image']}" style="width: 50px;height: 50px;border-radius: 50%"></td>
+                            <td>{$setindex['title']}</td>
+                            <td>{$setindex['describe']}</td>
+                            <td>{$setindex['Id']}</td>
+                            <td>
+                                <a href="{php echo $this->createWebUrl('index', array('op' => 'edit', 'Id' => $setindex['Id']))}" class="btn btn-xs btn-warning">编辑</a>
+                                <a href="javascript:void(0);" class="btn btn-xs btn-danger" onclick="if (confirm('确定删除？')) { location.href = '{php echo $this->createWebUrl('index', array('op' => 'delete', 'Id' => $setindex['Id']))}'; }">删除</a>
+                            </td>
+                        </tr>
+                        {/loop}
+                    </tbody>
+                </table>
+                {/if} 
+                {if $_GPC['op'] == 'add'}
+                <form action="{php echo $this->createWebUrl('index', array('op' => 'create'))}" method="post">
+                <input type="hidden" name="versionid" value="{$_W['uniacid']}">
+                    <div class="form-group">
+                    <label>图标</label>
+                        {php echo tpl_form_field_image('image', $img['image']);}
+                    </div>
+                    <div class="form-group">
+                        <label>小程序</label>
+                        <input type="text" name="title" id="title" class="form-control" placeholder="">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>小程序描述</label>
+                        <input type="text" name="describe" id="describe" class="form-control" placeholder="">
+                        <span class="help-block">此设置为该小程序的简单描述</span>
+                    </div>
+                    <div class="form-group">
+                        <label>小程序appid</label>
+                        <input type="text" name="Id" id="Id" class="form-control" placeholder="">
+                        <span class="help-block">从小程序后台获得，类似于wx15448fe7b79ad20x</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="提交" class="btn btn-primary">
+                    </div>
+                </form>
+                {/if} 
+                {if $_GPC['op'] == 'edit'}
+                <form action="{php echo $this->createWebUrl('index', array('op' => 'update'))}" method="post">
+                   <input type="hidden" name="ids" value="{$edit['Id']}">
+                   <input type="hidden" name="versionid" value="{$edit['versionid']}">
+                   <div class="form-group">
+                    <label>图标</label>
+                        {php echo tpl_form_field_image('image', $edit['image']);}
+                    </div>
+                    <div class="form-group">
+                        <label>小程序</label>
+                        <input type="text" name="title" id="title" class="form-control" placeholder="" value="{$edit['title']}">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>小程序描述</label>
+                        <input type="text" name="describe" id="describe" class="form-control" placeholder="" value="{$edit['describe']}">
+                        <span class="help-block">此设置为该小程序的简单描述</span>
+                    </div>
+                    <div class="form-group">
+                        <label>小程序appid</label>
+                        <input type="text" name="Id" id="Id" class="form-control" placeholder="" value="{$edit['Id']}">
+                        <span class="help-block">从小程序后台获得从小程序后台获得，类似于wx15448fe7b79ad20x</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="提交" class="btn btn-primary">
+                    </div>
+                </form>
+                {/if}
+            <div>
+        </div>
+    </div>
+</div>
+        {template 'common/footer'}
